@@ -21,5 +21,22 @@ export class Header {
       icono.removeClass('bi-sun').addClass('bi-moon');
     }
   }
+
+  /** Cierra el dropdown de Bootstrap al hacer click en un item con routerLink */
+  closeDropdown(dropdownLi: HTMLElement) {
+    const toggle = dropdownLi.querySelector('[data-bs-toggle="dropdown"]') as HTMLElement;
+    if (toggle) {
+      // Obtiene la instancia de Bootstrap Dropdown y la cierra
+      const bsDropdown = (window as any).bootstrap?.Dropdown?.getInstance(toggle);
+      if (bsDropdown) {
+        bsDropdown.hide();
+      } else {
+        // Fallback: quita clases manualmente si bootstrap no está disponible como módulo
+        toggle.setAttribute('aria-expanded', 'false');
+        dropdownLi.querySelector('.dropdown-menu')?.classList.remove('show');
+        dropdownLi.classList.remove('show');
+      }
+    }
+  }
 }
 

@@ -62,7 +62,8 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
-    min-width: 20rem;       /* evita scroll horizontal en zoom alto */
+    min-width: 20rem;
+    /* evita scroll horizontal en zoom alto */
     overflow-x: hidden;
     transition: background-color 0.3s, color 0.3s;
 }
@@ -115,4 +116,27 @@ body.dark-mode h6 {
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: var(--card-bg) !important;
+    /* Usamos el gris oscuro de tus cards */
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .dropdown-item {
+    color: var(--text-color) !important;
+    /* Texto claro */
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: var(--primary-color) !important;
+    /* Color azul al pasar el mouse */
+    color: #ffffff !important;
+}
+
+/* Si usas divisores dentro del dropdown */
+body.dark-mode .dropdown-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
