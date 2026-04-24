@@ -18,7 +18,7 @@
                         <a class="nav-link" routerLink="/home">Inicio</a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown" #destinosDropdown>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Destinos
@@ -28,9 +28,12 @@
                             <li>
                                 <h6 class="dropdown-header">Nacionales</h6>
                             </li>
-                            <li><a class="dropdown-item" routerLink="destino">Córdoba</a></li>
-                            <li><a class="dropdown-item" routerLink="destino">Tierra del Fuego</a></li>
-                            <li><a class="dropdown-item" routerLink="destino">San Juan</a></li>
+                            <li><a class="dropdown-item" routerLink="destino"
+                                    (click)="closeDropdown(destinosDropdown)">Córdoba</a></li>
+                            <li><a class="dropdown-item" routerLink="destino"
+                                    (click)="closeDropdown(destinosDropdown)">Tierra del Fuego</a></li>
+                            <li><a class="dropdown-item" routerLink="destino"
+                                    (click)="closeDropdown(destinosDropdown)">San Juan</a></li>
 
                             <li>
                                 <hr class="dropdown-divider">
@@ -39,9 +42,12 @@
                             <li>
                                 <h6 class="dropdown-header">Internacionales</h6>
                             </li>
-                            <li><a class="dropdown-item" routerLink="destino">Colombia</a></li>
-                            <li><a class="dropdown-item" routerLink="destino">Cancún</a></li>
-                            <li><a class="dropdown-item" routerLink="destino">Brasil</a></li>
+                            <li><a class="dropdown-item" routerLink="destino"
+                                    (click)="closeDropdown(destinosDropdown)">Colombia</a></li>
+                            <li><a class="dropdown-item" routerLink="destino"
+                                    (click)="closeDropdown(destinosDropdown)">Cancún</a></li>
+                            <li><a class="dropdown-item" routerLink="destino"
+                                    (click)="closeDropdown(destinosDropdown)">Brasil</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
