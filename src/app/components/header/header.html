@@ -1,0 +1,72 @@
+<header>
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal">
+        <div class="container">
+            <!-- Logo de la agencia -->
+            <a routerLink="/home" class="navbar-brand">Waldo's Travel</a>
+
+            <!-- Botón toggle para dispositivos móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal"
+                aria-controls="navbarPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Opciones del menú principal-->
+            <div class="collapse navbar-collapse" id="navbarPrincipal">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home">Inicio</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Destinos
+                        </a>
+                        <!-- Menú desplegable usando Bootstrap dropdown -->
+                        <ul class="dropdown-menu">
+                            <li>
+                                <h6 class="dropdown-header">Nacionales</h6>
+                            </li>
+                            <li><a class="dropdown-item" routerLink="destino">Córdoba</a></li>
+                            <li><a class="dropdown-item" routerLink="destino">Tierra del Fuego</a></li>
+                            <li><a class="dropdown-item" routerLink="destino">San Juan</a></li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <h6 class="dropdown-header">Internacionales</h6>
+                            </li>
+                            <li><a class="dropdown-item" routerLink="destino">Colombia</a></li>
+                            <li><a class="dropdown-item" routerLink="destino">Cancún</a></li>
+                            <li><a class="dropdown-item" routerLink="destino">Brasil</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="agencias.html">Agencias</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="precios.html">Membresías</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog.html">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+
+                <!-- Botón para alternar el modo oscuro -->
+                <div class="d-flex align-items-center">
+                    <button (click)="toggleDarkMode()"
+                        class="btn btn-outline-secondary border-0 p-2 d-flex align-items-center justify-content-center rounded-circle dark-mode-btn"
+                        type="button" aria-label="Alternar modo oscuro">
+                        <i class="bi bi-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

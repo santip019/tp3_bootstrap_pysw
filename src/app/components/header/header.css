@@ -1,0 +1,64 @@
+:host {
+    display: block;
+    grid-area: header;
+}
+
+.dark-mode-btn i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.dark-mode-btn:hover i {
+    transform: rotate(20deg);
+}
+
+.container a {
+    padding-left: clamp(0.5rem, 2vw, 1.875rem);
+}
+
+
+.navbar-brand {
+    font-family: var(--font-title);
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 700;
+    color: var(--primary-color) !important;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    /* Esto permite que en modo oscuro sea negro traslúcido y en claro blanco traslúcido */
+    background-color: rgba(var(--navbar-bg-rgb, 255, 255, 255), 0.8) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    z-index: 1050;
+    /* Un poco más alto que el estándar de Bootstrap por si las dudas */
+    transition: all 0.3s ease;
+}
+
+/* Ajuste para el texto del navbar en el sticky */
+.nav-link {
+    color: var(--text-color) !important;
+}
+
+.nav-link:hover {
+    color: var(--secondary-color) !important;
+}
+
+/* Modo oscuro: fondo glassmorphism oscuro, sin recuadro */
+body.dark-mode .navbar {
+    background: rgba(18, 18, 18, 0.85) !important;
+    backdrop-filter: blur(10px);
+}
+
+/* Botón de Modo Oscuro */
+.dark-mode-btn {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dark-mode-btn:hover {
+    background: var(--surface-color);
+    color: var(--secondary-color);
+}
