@@ -87,3 +87,26 @@ body.dark-mode .dropdown-header {
 body.dark-mode .dropdown-divider {
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
+
+/* Boton Hamburguesa hecho de forma manual */
+.custom-toggler {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.custom-toggler span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color, #1e1e1e);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .custom-toggler span {
+    background-color: #ffffff;
+}

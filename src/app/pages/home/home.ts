@@ -27,11 +27,6 @@ export class Home implements AfterViewInit {
       });
     }
 
-    // Configuración del Carousel con jQuery
-    $('#testimonialCarousel').on('slid.bs.carousel', function () {
-      console.log('El testimonio ha cambiado');
-    });
-
     // Ejemplo de hover con jQuery para resaltar la tarjeta de testimonio
     $('.testimonial-card').on('mouseenter', function (this: HTMLElement) {
       $(this).addClass('border-primary');
