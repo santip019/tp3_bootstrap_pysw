@@ -1,97 +1,101 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
 import * as jQuery from 'jquery';
 const $ = (jQuery as any).default || jQuery;
 
 @Component({
   selector: 'app-contacto',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
   templateUrl: './contacto.html',
-  styleUrl: './contacto.css',
+  styleUrls: ['./contacto.css']
 })
-export class Contacto implements AfterViewInit {
-  protected readonly plans = [
+export class ContactoComponent implements AfterViewInit {
+  // Estados para la UI
+  public isSubmitting: boolean = false;
+  public showSuccess: boolean = false;
+
+  public plans: string[] = [
     'Cruceros de Lujo',
     'Expediciones Árticas',
     'Retiros Espirituales',
-    'Gastronomía de Autor',
+    'Gastronomía de Autor'
   ];
 
-  protected name = '';
-  protected email = '';
-  protected plan = this.plans[0];
-  protected message = '';
-  protected submitted = false;
-  protected showSuccess = false;
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
-    const nameInput = $('#name');
-    const emailInput = $('#email');
-    const messageInput = $('#message');
+    // Referencias a los elementos con jQuery
+    const $name = $('#name');
+    const $email = $('#email');
+    const $message = $('#message');
+    const $form = $('#contactForm');
 
-    nameInput.on('input', () => this.validateName(nameInput));
-    emailInput.on('input', () => this.validateEmail(emailInput));
-    messageInput.on('input', () => this.validateMessage(messageInput));
+    // 1. Validación en tiempo real (.on('input') y .val())
+    $name.on('input', () => {
+      const val = String($name.val() || '').trim();
+      const isValid = val.length >= 3 && /^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$/.test(val);
+      this.toggleClasses($name, isValid);
+      this.checkFormValidity();
+    });
+
+    $email.on('input', () => {
+      const val = String($email.val() || '').trim();
+      const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+      this.toggleClasses($email, isValid);
+      this.checkFormValidity();
+    });
+
+    $message.on('input', () => {
+      const val = String($message.val() || '').trim();
+      const isValid = val.length >= 10;
+      this.toggleClasses($message, isValid);
+      this.checkFormValidity();
+    });
   }
 
-  protected submitContact(form: NgForm) {
-    this.submitted = true;
-
-    if (form.invalid) {
-      return;
+  // Alterna las clases de validación de Bootstrap
+  private toggleClasses($el: any, isValid: boolean) {
+    if (isValid) {
+      $el.addClass('is-valid').removeClass('is-invalid');
+    } else {
+      $el.addClass('is-invalid').removeClass('is-valid');
     }
-
-    const contactData = {
-      name: this.sanitize(this.name),
-      email: this.sanitize(this.email),
-      plan: this.sanitize(this.plan),
-      message: this.sanitize(this.message),
-    };
-
-    console.log('Contacto enviado:', contactData);
-    this.showSuccess = true;
-    this.submitted = false;
-    form.resetForm({ plan: this.plans[0] });
-    this.name = '';
-    this.email = '';
-    this.message = '';
-    $('.form-control').removeClass('is-valid is-invalid');
   }
 
-  protected closeSuccess() {
+  // Habilita el botón solo si todo es válido
+  private checkFormValidity() {
+    const allValid = $('.is-valid').length === 3;
+    if (allValid) {
+      $('#btnSubmit').removeAttr('disabled');
+    } else {
+      $('#btnSubmit').attr('disabled', 'true');
+    }
+  }
+
+  // 2. Envío con Spinner y 3. Modal de Confirmación
+  submitContact(event: Event) {
+    event.preventDefault(); // Evita recarga de página
+
+    this.isSubmitting = true;
+    this.cdr.detectChanges(); // Fuerza a Angular a mostrar el spinner inmediatamente
+    
+    $('#btnSubmit').attr('disabled', 'true');
+
+    // Simulación de envío (2 segundos de carga)
+    setTimeout(() => {
+      this.isSubmitting = false;
+      this.showSuccess = true;
+      this.cdr.detectChanges(); // Actualiza para mostrar el modal
+
+      // Resetear el formulario y estilos
+      ($('#contactForm')[0] as HTMLFormElement).reset();
+      $('.form-control').removeClass('is-valid is-invalid');
+      $('#btnSubmit').attr('disabled', 'true');
+    }, 2000);
+  }
+
+  closeSuccess() {
     this.showSuccess = false;
   }
-
-  private sanitize(value: string) {
-    return value.replace(/<[^>]*>/g, '').trim();
-  }
-
-  private validateName($element: any) {
-    const value = String($element.val() ?? '').trim();
-    this.name = this.sanitize(value);
-    const valid = value.length >= 3 && /^[A-Za-zÑñÁÉÍÓÚáéíóú ]+$/.test(value);
-    this.updateFieldState($element, valid);
-  }
-
-  private validateEmail($element: any) {
-    const value = String($element.val() ?? '').trim();
-    this.email = this.sanitize(value);
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-    this.updateFieldState($element, valid);
-  }
-
-  private validateMessage($element: any) {
-    const value = String($element.val() ?? '').trim();
-    this.message = this.sanitize(value);
-    const valid = value.length >= 10;
-    this.updateFieldState($element, valid);
-  }
-
-  private updateFieldState($element: any, valid: boolean) {
-    $element.toggleClass('is-valid', valid);
-    $element.toggleClass('is-invalid', !valid);
-  }
 }
-

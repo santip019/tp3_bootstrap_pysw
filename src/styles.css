@@ -193,3 +193,24 @@ body.dark-mode .table > :not(caption) > * > * {
     background-color: var(--card-bg) !important; /* Forzamos el fondo a oscuro */
     border-color: rgba(255, 255, 255, 0.1) !important;
 }
+ /* Refuerzo de visibilidad para descripciones en modo oscuro */
+body.dark-mode .text-muted, 
+body.dark-mode .text-white-50 {
+    color: var(--text-gray) !important;
+    opacity: 1 !important; /* Elimina la transparencia de Bootstrap para ganar nitidez */
+}
+
+/* Asegura que la descripción principal del header sea legible */
+body.dark-mode .lead {
+    color: var(--text-color) !important;
+}
+
+/* Visibilidad de la descripción dentro de las tarjetas (cara trasera) */
+body.dark-mode .card-text {
+    color: var(--text-color) !important;
+}
+
+/* Mejora el contraste de la frase de cierre en las agencias */
+body.dark-mode .alert-light small {
+    color: #ffffff !important;
+}
