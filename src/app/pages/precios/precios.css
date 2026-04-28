@@ -1,0 +1,39 @@
+main {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+
+
+/*Tabla responsiva*/
+th {
+    background: #f3f4f5;
+    font-family: 'Noto Serif', serif;
+    color: #00327d;
+}
+
+tbody th:first-child {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.75rem;
+    color: #464646;
+    background: none;
+    border-bottom: 1px solid #c3c6d5;
+}
+
+td {
+    padding: 1.5rem 1rem;
+}
+
+/* Efecto de resaltado en la tabla al pasar el cursor */
+tr:hover td, tbody tr:hover th{
+    background: rgba(0, 50, 125, 0.05);
+}
+
+td svg {
+    transition: transform 0.3s ease;
+}
+
+tr:hover td svg {
+    transform: scale(1.2);
+}
