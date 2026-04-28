@@ -1,0 +1,135 @@
+
+/* Estilos específicos para las cards con efecto flip */
+.agencia-card {
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    min-height: 420px;
+    position: relative;
+}
+
+.agencia-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    min-height: 550px;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 0.375rem;
+    overflow: hidden;
+}
+
+.card-face.back {
+    transform: rotateY(180deg);
+}
+
+/* Estilos para las imágenes de las cards */
+.card-img-container {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.agencia-card:hover .card-img-container img {
+    transform: scale(1.05);
+}
+
+/* Estilos para el sistema de rating */
+.rating-stars {
+    display: flex;
+    gap: 2px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.star {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.star:hover,
+.star.active {
+    color: #ffc107;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+.star:hover ~ .star:not(.active) {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para el header */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .agencia-card {
+        margin-bottom: 2rem;
+    }
+
+    .rating-stars {
+        gap: 1px;
+    }
+
+    .star {
+        font-size: 18px;
+    }
+}
+
+/* Animación de entrada para las cards */
+.agencia-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.agencia-card:nth-child(1) { animation-delay: 0.1s; }
+.agencia-card:nth-child(2) { animation-delay: 0.2s; }
+.agencia-card:nth-child(3) { animation-delay: 0.3s; }
+.agencia-card:nth-child(4) { animation-delay: 0.4s; }
+.agencia-card:nth-child(5) { animation-delay: 0.5s; }
+.agencia-card:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -4,6 +4,8 @@ import { Destinos } from './pages/destinos/destinos';
 import { Precios } from './pages/precios/precios';
 import { Blog } from './pages/blog/blog';
 import { Phishing } from './pages/phishing/phishing';
+import { Agencias } from './pages/agencias/agencias';
+import { Contacto } from './pages/contacto/contacto';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -11,5 +13,7 @@ export const routes: Routes = [
     { path: 'destinos', component: Destinos },
     { path: 'precios', component: Precios },
     { path: 'blog', component: Blog },
+    { path: 'agencias', component: Agencias },
+    { path: 'contacto', component: Contacto },
     { path: 'phishing', component: Phishing },
 ];

@@ -1,0 +1,75 @@
+.contacto-page {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.contacto-title {
+  font-family: var(--font-title);
+  line-height: 1.05;
+}
+
+.contact-info-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+.contact-info-card h3 {
+  font-family: var(--font-title);
+  margin-bottom: 0.5rem;
+}
+
+.contact-info-card p {
+  color: #6c757d;
+}
+
+.invalid-feedback {
+  display: none;
+}
+
+.form-control.is-invalid ~ .invalid-feedback,
+.form-control.is-invalid + .invalid-feedback {
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .contacto-page {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+        
+
+        body:has(#dark-mode-toggle:checked) .form-group input:focus,
+        body:has(#dark-mode-toggle:checked) .form-group textarea:focus,
+        body:has(#dark-mode-toggle:checked) .form-group select:focus {
+            border-color: #4a8ef0;
+            background: rgba(74, 142, 240, 0.1);
+        }
+
+        body:has(#dark-mode-toggle:checked) .submit-label,
+        body:has(#dark-mode-toggle:checked) .modal-btn {
+            background: linear-gradient(135deg, #4a8ef0, #2a65bc);
+        }
+
+        body:has(#dark-mode-toggle:checked) .modal-content {
+            background: #2a2a2a;
+            color: #e4e4e4;
+        }
+
+        body:has(#dark-mode-toggle:checked) .modal-content svg {
+            color: #4a8ef0;
+            background: rgba(74, 142, 240, 0.15);
+        }
+
+        body:has(#dark-mode-toggle:checked) .modal-title {
+            color: #4a8ef0;
+        }
+
+        body:has(#dark-mode-toggle:checked) .modal-content p {
+            color: #a0a3b0;
+        }
