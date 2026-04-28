@@ -1,0 +1,65 @@
+<main class="agencia-page container py-5">
+    <div class="container my-5">
+        <header class="text-center mb-5">
+            <h1 class="display-4 fw-light text-start mb-4">Nuestras Agencias Colaboradoras</h1>
+            <p class="lead text-muted text-start" style="max-width: 700px;">
+                Seleccionamos meticulosamente a cada socio para garantizar que su viaje sea una narrativa visual y sensorial orquestada por los mejores expertos.
+            </p>
+        </header>
+
+        <div class="row g-4">
+            <div *ngFor="let agencia of agencias" class="col-lg-4 col-md-6">
+                <div class="card agencia-card" (click)="toggleCard(agencia)">
+                    <div class="card-inner" [class.flipped]="agencia.flipped">
+
+                        <div class="card-face front">
+                            <img [src]="agencia.logo" [alt]="agencia.nombre" class="card-img-top">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title text-primary fw-light mb-3">{{ agencia.nombre }}</h5>
+                                <div class="mt-auto">
+                                    <small class="text-muted">Haz clic para más información</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-face back bg-primary text-white">
+                            <div class="card-body d-flex flex-column h-100">
+                                <h5 class="card-title fw-light mb-3">{{ agencia.titulo }}</h5>
+                                <p class="card-text flex-grow-1">{{ agencia.descripcion }}</p>
+
+                                <div class="mb-3">
+                                    <h6 class="fw-bold mb-2">Incluye:</h6>
+                                    <ul class="list-unstyled">
+                                        <li *ngFor="let caracteristica of agencia.caracteristicas" class="mb-1">
+                                            <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                                            {{ caracteristica }}
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="rating-container mb-3">
+                                    <small class="text-white-50">Calificación:</small>
+                                    <div class="rating-stars fs-5"> 
+                                        <i *ngFor="let star of getStarsArray(5)" 
+                                           class="bi text-warning" 
+                                           [ngClass]="star <= agencia.rating ? 'bi-star-fill' : 'bi-star'" 
+                                           (click)="setRating(agencia, star, $event)" 
+                                           role="button"
+                                           style="cursor: pointer;">
+                                        </i>
+                                    </div>
+                                    <small class="text-white-50 ms-2">({{ agencia.ratingPromedio }})</small>
+                                </div>
+
+                                <div class="alert alert-light bg-white bg-opacity-25 border-0 text-center mt-auto">
+                                    <small class="fst-italic">{{ agencia.frase }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

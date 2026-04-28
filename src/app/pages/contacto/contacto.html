@@ -1,0 +1,136 @@
+<main class="contacto-page container py-5">
+  <div class="row gy-4 align-items-start">
+    <section class="col-lg-5">
+      <span class="badge rounded-pill bg-primary bg-opacity-10 text-primary mb-3">Contacto Editorial</span>
+      <h1 class="display-6 fw-semibold contacto-title">
+        Diseñemos su próxima crónica.
+      </h1>
+      <p class="text-muted lead">
+        Nuestros corresponsales y conserjes digitales están listos para transformar sus deseos en itinerarios curados.
+        Cada mensaje es tratado como el borrador de una gran historia.
+      </p>
+
+      <div class="row row-cols-1 row-cols-md-2 g-3 mt-4">
+        <article class="col">
+          <div class="card h-100 shadow-sm border-0 contact-info-card">
+            <div class="card-body">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-newspaper fs-2"></i>
+              </div>
+              <h3 class="h6">Relaciones de Prensa</h3>
+              <p class="mb-0 text-muted">media@editorialtraveler.com</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="col">
+          <div class="card h-100 shadow-sm border-0 contact-info-card">
+            <div class="card-body">
+              <div class="mb-3 text-primary">
+                <i class="bi bi-headset fs-2"></i>
+              </div>
+              <h3 class="h6">Soporte VIP</h3>
+              <p class="mb-0 text-muted">+34 900 123 456</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="col-lg-7">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4 p-md-5">
+          <h2 class="h4 mb-4 text-primary">Contacta con un Asesor</h2>
+          <form #contactForm="ngForm" (ngSubmit)="submitContact(contactForm)" novalidate>
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label for="name" class="form-label">Nombre Completo</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="name"
+                  #nameModel="ngModel"
+                  minlength="3"
+                  pattern="[A-Za-zÑñÁÉÍÓÚáéíóú ]+"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Nombre completo es obligatorio y debe tener al menos 3 caracteres.
+                </div>
+              </div>
+
+              <div class="col-12 col-md-6">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  class="form-control"
+                  [(ngModel)]="email"
+                  pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                  #emailModel="ngModel"
+                  required
+                />
+                <div class="invalid-feedback">
+                  Ingresa un correo electrónico válido.
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="plan" class="form-label">Plan de Interés</label>
+                <select
+                  id="plan"
+                  name="plan"
+                  class="form-select"
+                  [(ngModel)]="plan"
+                  required
+                >
+                  <option *ngFor="let planOption of plans" [value]="planOption">{{ planOption }}</option>
+                </select>
+              </div>
+
+              <div class="col-12">
+                <label for="message" class="form-label">Mensaje Adicional / Visión</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  class="form-control"
+                  rows="5"
+                  [(ngModel)]="message"
+                  pattern=".{10,}"
+                  #messageModel="ngModel"
+                  minlength="10"
+                  required
+                ></textarea>
+                <div class="invalid-feedback">
+                  El mensaje debe tener al menos 10 caracteres.
+                </div>
+              </div>
+
+              <div class="col-12 d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Enviar Mensaje</button>
+              </div>
+            </div>
+            <div class="mt-4 text-muted small d-flex align-items-center gap-2">
+              <i class="bi bi-shield-lock-fill"></i>
+              Sus datos están protegidos por encriptación TLS.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center p-3" *ngIf="showSuccess" style="background: rgba(0, 0, 0, 0.45); z-index: 1050;">
+    <div class="card shadow-lg border-0 modal-card" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="card-body text-center p-4">
+        <i class="bi bi-check-circle-fill fs-1"></i>
+        <h3 id="successTitle" class="h5 mb-3">¡Mensaje Enviado!</h3>
+        <p class="text-muted mb-4">Nuestra red de editores ha recibido su solicitud. En menos de 24 horas iniciaremos la curaduría de su experiencia.</p>
+        <button class="btn btn-outline-primary" type="button" (click)="closeSuccess()">Entendido</button>
+      </div>
+    </div>
+  </div>
+</main>
