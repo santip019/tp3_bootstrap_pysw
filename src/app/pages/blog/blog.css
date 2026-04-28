@@ -4,6 +4,63 @@ main {
     padding: 0 2rem;
 }
 
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+/* Estado cuando es visible */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+input[type="radio"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+input[type="radio"]:focus-visible + label {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+/* Dar diseño de botón a las etiquetas (Labels) */
+label {
+    display: inline-block; /* Esto hace que se muestren en línea */
+    padding: 10px 24px;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 30px;      /* Bordes redondeados modernos */
+    cursor: pointer;          /* Mano al pasar el cursor */
+    font-weight: bold;          /* Letra negrita */
+    font-family: 'Noto Serif', serif;        
+    margin: 5px;              /* Margen entre botones */
+    transition: all 0.3s ease; /* Transición suave al hacer clic */
+    border: 2px solid transparent; 
+}
+
+/* Efecto hover al pasar el mouse por los botones */
+label:hover {
+    background-color: var(--surface-color);
+    transform: translateY(-2px); /* Se eleva*/
+}
+
+/* Darle color brillante solo al botón que está activo (:checked) */
+input[type="radio"]:checked + label {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--secondary-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
 .card, .blog-card{
     border-bottom: #1a4b8f 5px solid;
     border-top: none;

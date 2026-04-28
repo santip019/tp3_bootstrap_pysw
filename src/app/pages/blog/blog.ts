@@ -9,6 +9,22 @@ import $ from 'jquery';
 })
 export class Blog implements AfterViewInit {
   ngAfterViewInit(): void {
+    const reveal = () => {
+      $('.reveal').each(function() {
+        const windowHeight = $(window).height()!;
+        const elementTop = $(this).offset()!.top;
+        const elementVisible = 200; // Distancia en px para activar la animación
+
+        if (elementTop < windowHeight + $(window).scrollTop()! - elementVisible) {
+          $(this).addClass('active');
+        }
+      });
+    };
+
+    // Ejecutar al hacer scroll y una vez al cargar por si hay elementos visibles
+    $(window).on('scroll', reveal);
+    reveal();
+
     // Lógica de filtrado de jQuery
     $('input[name="category"]').on('change', function () {
       const category = $(this).val() as string;
