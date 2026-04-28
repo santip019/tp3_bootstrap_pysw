@@ -112,7 +112,7 @@ input[type="radio"]:checked + label {
 
 .autor {
     font-size: .68rem;
-    color: #7c7c7c;
+    color: var(--text-gray);
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: #cacaca 1px solid;
@@ -121,7 +121,7 @@ input[type="radio"]:checked + label {
 
 .card-text {
     font-family: var(--font-title);
-    color: rgb(90, 90, 90) ;
+    color: var(--text-color);
     font-size: 15px;
     padding: 15px;
 }
@@ -131,7 +131,7 @@ input[type="radio"]:checked + label {
 }
 
 .comentario-texto {
-    color: rgb(160, 160, 160) ;
+    color: var(--text-gray);
     font-size: 13px;
     padding: 4px;
 }

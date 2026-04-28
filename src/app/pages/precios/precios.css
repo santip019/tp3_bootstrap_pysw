@@ -1,39 +1,272 @@
+/* ========================================================
+   SECCIÓN PRECIOS - ESTILOS PREMIUM
+   ======================================================== */
+
 main {
     max-width: 1280px;
     margin: 0 auto;
     padding: 0 2rem;
 }
 
-
-
-/*Tabla responsiva*/
-th {
-    background: #f3f4f5;
+/* Encabezados y Textos */
+main h1 {
     font-family: 'Noto Serif', serif;
-    color: #00327d;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
 }
 
-tbody th:first-child {
-    font-family: 'Manrope', sans-serif;
+main p {
+    color: var(--text-gray, #6c757d);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ========================================================
+   TARJETAS DE MEMBRESÍA
+   ======================================================== */
+.card {
+    background-color: var(--card-bg, #ffffff);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 1.5rem;
+    padding: 2.5rem 2rem;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Efecto hover dinámico (Requisito) */
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+    z-index: 2;
+}
+
+/* Etiquetas y Títulos de Tarjeta */
+.card-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-gray, #6c757d);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.card-title {
+    font-family: 'Noto Serif', serif;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+}
+
+/* Precio */
+.price {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.price .amount {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.price .period {
+    font-size: 1rem;
+    color: var(--text-gray, #6c757d);
+    margin-left: 0.25rem;
+}
+
+/* Lista de características */
+.list-group {
+    flex-grow: 1; /* Permite que el botón siempre quede abajo */
+}
+
+.list-group-flush {
+    margin-bottom: 2rem;
+}
+
+.list-group-item {
+    background: transparent;
+    border: none;
+    padding: 0.8rem 0;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.list-group-item svg {
+    color: var(--primary-color);
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+/* Diseño visual de los Tooltips (Requisito) */
+.list-group-item span[data-bs-toggle="tooltip"] {
+    cursor: help;
+    border-bottom: 1px dotted var(--text-gray, #ccc);
+    transition: color 0.3s ease;
+}
+
+.list-group-item span[data-bs-toggle="tooltip"]:hover {
+    color: var(--primary-color);
+}
+
+/* Botones de las tarjetas */
+.card .btn {
+    border-radius: 30px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: auto;
+}
+
+.card .btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.card .btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ========================================================
+   TARJETA TRAVELER ELITE (DESTACADA)
+   ======================================================== */
+.card.elite-card {
+    border: 2px solid var(--primary-color);
+    background: linear-gradient(to bottom, var(--card-bg, #ffffff) 0%, rgba(0, 50, 125, 0.02) 100%);
+    /* Eliminamos el transform: scale(1.05) para que no se superponga con las otras cards horizontalmente */
+}
+
+.card.elite-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Lazo "Recomendado" */
+.card.elite-card .badge {
+    position: absolute;
+    top: 1.5rem;
+    right: -2.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.5rem 3rem;
     font-size: 0.75rem;
-    color: #464646;
-    background: none;
-    border-bottom: 1px solid #c3c6d5;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 2;
 }
 
-td {
-    padding: 1.5rem 1rem;
+/* Sobrescribir botón danger que estaba en el HTML por uno primario sólido */
+.card.elite-card .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
 }
 
-/* Efecto de resaltado en la tabla al pasar el cursor */
-tr:hover td, tbody tr:hover th{
-    background: rgba(0, 50, 125, 0.05);
+.card.elite-card .btn:hover {
+    background-color: var(--surface-color, #1a4a90);
+    border-color: var(--surface-color, #1a4a90);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-td svg {
-    transition: transform 0.3s ease;
+/* ========================================================
+   TABLA RESPONSIVA COMPARATIVA
+   ======================================================== */
+.tablas {
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    background: var(--card-bg, #fff);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-color); /* Forzamos color de texto para modo oscuro */
 }
 
-tr:hover td svg {
+.tabla {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+    color: var(--text-color); /* Sobrescribimos el color nativo de bootstrap table */
+}
+
+.tabla th, .tabla td {
+    padding: 1.5rem;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-color); /* Aseguramos legibilidad en cada celda */
+}
+
+.tabla th:first-child, .tabla td:first-child {
+    text-align: left;
+}
+
+.tabla thead th {
+    background-color: var(--surface-color, #f8f9fa);
+    color: var(--primary-color);
+    font-family: 'Noto Serif', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.tabla tbody th {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 0.95rem;
+}
+
+/* Efecto Hover en la Tabla */
+.tabla tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.tabla tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+.tabla td svg {
+    color: var(--primary-color);
+    fill: currentColor !important; /* Forzamos el fill usando css para pisar el del HTML */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tabla tbody tr:hover td svg {
     transform: scale(1.2);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* ========================================================
+   RESPONSIVIDAD
+   ======================================================== */
+@media (max-width: 991px) {
+    .card.elite-card:hover {
+        transform: translateY(-10px) scale(1.02);
+    }
 }
