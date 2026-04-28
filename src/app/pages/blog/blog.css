@@ -66,10 +66,21 @@ input[type="radio"]:checked + label {
     border-top: none;
     border-left: none;
     border-right: none;
-    transition: transform 0.3s ease, shadow 0.2s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.zoom-active {
+.card.zoom-active, 
+.blog-card.zoom-active {
+    transform: scale(1.03);
+    z-index: 10;
+    box-shadow: 0 10px 20px rgba(0, 50, 125, 0.199) !important;
+}
+
+.comentario {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comentario.zoom-active {
     transform: scale(1.03);
     z-index: 10;
     box-shadow: 0 10px 20px rgba(0, 50, 125, 0.199) !important;
