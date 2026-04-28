@@ -1,0 +1,41 @@
+/*Recuadro rojo para advertencias*/
+.alerta-roja {
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: block;
+}
+
+/* Card personalizada */
+.card-custom {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* CSS Sprites*/
+/* Usamos una sola imagen (sprite) y movemos el background-position
+   para mostrar cada icono individual. Esto reduce las peticiones HTTP. */
+.sprite-icon {
+    background-image: url('/assets/img/social-sprites.png');
+    background-repeat: no-repeat;
+    background-size: 96px 32px; /* Tamaño total del sprite: 3 iconos de 32x32 */
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.sprite-icon:hover {
+    transform: scale(1.15);
+}
+
+/* Posición de cada icono dentro del sprite (background-position) */
+/*.facebook  { background-position: 0 0; } */        /* Primer icono: x=0 */
+/*.twitter   { background-position: -32px 0; } */    /* Segundo icono: desplaza 32px a la izquierda */
+/*.instagram { background-position: -64px 0; } */   /* Tercer icono: desplaza 64px a la izquierda */
