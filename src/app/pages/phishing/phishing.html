@@ -1,0 +1,167 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
+<!-- jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Bootstrap JS (necesario para los modals) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<div class="container my-5"> <!--Contenedor principal-->
+<div class="row justify-content-center"> <!--Centra las columnas-->
+    <div class="col-12 col-md-10 col-lg-8"> <!--Columna de ancho variable-->
+
+        <div class="card card-custom"> <!--Tarjeta con borde redondeado-->
+            <div class="card-header card-header-custom text-center py-4"> <!--Header de la tarjeta-->
+            <h3 class="mb-0">Registro Medios de Pago</h3> <!--Título del formulario-->
+        </div>
+
+        <div class="card-body p-4">
+
+            <!-- Mensaje de éxito -->
+            <div id="exito-msg" class="alert alert-success d-none text-center">¡Se registró el medio de pago correctamente!</div>
+
+            <!-- Mensaje de error -->
+            <div id="error-msg" class="alert alert-danger d-none text-center">Por favor, completa todos los campos requeridos.</div>
+
+            <form id="payment-form"> <!--Formulario-->
+            <div class="row g-3"> <!--Filas y columnas-->
+                <div class="col-12"> <!--Numero de tarjeta-->
+                    <label for="numeroTarjeta" class="form-label">Número de Tarjeta</label>
+                    <!--pattern valida 16 dígitos, required obliga a completar -->
+                    <input type="text" class="form-control" id="numeroTarjeta" name="numeroTarjeta" 
+                           placeholder="1234 5678 9012 3456" pattern="\d{16}" required />
+                    <!-- Contenedor para mensaje (reemplaza el @if de Angular) -->
+                    <small id="msg-tarjeta" class="alerta-roja d-none"></small>
+                </div>
+
+                <div class="col-md-6"> <!--Fecha de expiración-->
+                    <label for="expiracion" class="form-label">Fecha de expiracion</label>
+                    <input type="date" class="form-control" id="expiracion" name="expiracion" required />
+                    <small id="msg-expiracion" class="alerta-roja d-none"></small>
+                </div>
+
+                <div class="col-md-6"> <!--Codigo de seguridad-->
+                    <label for="codigo" class="form-label">Codigo de Seguridad</label>
+                    <!--pattern valida 3 o 4 dígitos -->
+                    <input type="text" class="form-control" id="codigo" name="codigo" 
+                           placeholder="123" pattern="\d{3,4}" maxlength="4" required />
+                    <small id="msg-codigo" class="alerta-roja d-none"></small>
+                </div>
+                
+                <div class="col-md-6"> <!--Nombre del titular-->
+                    <label for="nombre" class="form-label">Nombre del Titular</label>
+                    <!--pattern solo letras y espacios -->
+                    <input type="text" class="form-control" id="nombre" name="nombre" 
+                           placeholder="Nombre que aparece en la tarjeta" pattern="[A-Za-záéíóúÁÉÍÓÚñÑ\s]+" required />
+                    <small id="msg-nombre" class="alerta-roja d-none"></small>
+                </div>
+
+                <div class="col-md-6"> <!--DNI-->
+                    <label for="dni" class="form-label">DNI del Titular</label>
+                    <input type="text" class="form-control" id="dni" name="dni" 
+                           placeholder="DNI del titular" pattern="\d{7,8}" maxlength="8" required />
+                </div>
+
+                <div class="col-md-6"> <!--Ciudad-->
+                    <label for="ciudad" class="form-label">Ciudad</label>
+                    <input type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" required />
+                </div>
+
+                <div class="col-md-3"> <!--Provincia-->
+                    <label for="provincia" class="form-label">Provincia</label>
+                    <select class="form-select" id="provincia" name="provincia" required>
+                        <option value="" selected disabled>Selecciona una provincia</option>
+                        <option value="CBA">Córdoba</option>
+                        <option value="TDF">Tierra del Fuego</option>
+                        <option value="SJ">San Juan</option>
+                        <option value="MZA">Mendoza</option>
+                        <option value="CABA">Ciudad Autónoma de Buenos Aires</option>
+                        <option value="JUJ">Jujuy</option>
+                    </select>
+                </div>
+
+                <div class="col-md-3"> <!--Código postal-->
+                    <label for="postal-code" class="form-label">Código Postal</label>
+                    <input type="text" class="form-control" id="postal-code" name="postalCode" 
+                           placeholder="12345" pattern="\d{4,5}" maxlength="5" required />
+                </div>
+
+                <div class="col-12"> <!--Métodos de pago-->
+                    <label class="form-label">Métodos de Pago Aceptados:</label>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-outline-secondary"><i class="fab fa-cc-visa"></i></button>
+                        <button type="button" class="btn btn-outline-secondary"><i class="fab fa-cc-mastercard"></i></button>
+                        <button type="button" class="btn btn-outline-secondary"><i class="fab fa-cc-amex"></i></button>
+                        <button type="button" class="btn btn-outline-secondary"><i class="fab fa-cc-paypal"></i></button>
+                    </div>
+                </div>
+
+                <!-- Sección CSS Sprites - Redes sociales 
+                <div class="col-12 mt-2">
+                    <label class="form-label">Síguenos para más seguridad:</label>
+                    <div class="d-flex gap-3">
+                        <div class="sprite-icon facebook" title="Facebook"></div>
+                        <div class="sprite-icon twitter" title="Twitter"></div>
+                        <div class="sprite-icon instagram" title="Instagram"></div>
+                    </div>
+                </div>  -->
+
+                <div class="col-12">
+                    <h3 class="text-center">Quien recibira los comprobantes de la compra?</h3>
+                </div>
+
+                <div class="col-12"> <!--Correo electrónico-->
+                    <label for="correo">Correo Electronico</label>
+                    <input type="email" class="form-control" id="correo" name="correo" 
+                           placeholder="correo@ejemplo.com" required />
+                </div>
+
+                <div class="col-md-6"> <!--Nombre y Apellido-->
+                    <label for="nombreApellido" class="form-label">Nombre y Apellido</label>
+                    <input type="text" class="form-control" id="nombreApellido" name="nombreApellido"
+                           placeholder="Nombre del usuario"/>
+                </div>
+
+            </div>
+
+            <div class="d-flex justify-content-end gap-2 mt-4">
+                <button type="reset" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="btn-enviar">Enviar</button>
+            </div>
+            </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="enviar" tabindex="-1" aria-labelledby="enviarLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content modal-dark">
+
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="enviarLabel">¿Estás seguro de que quieres enviar este formulario?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p>Al enviar este formulario se registrara tu tarjeta de credito en nuestra base de datos, <strong>eso no hay que hacerlo nunca!!</strong></p>
+                    <hr>
+                    <p>Ya que ningun sitio web pide los datos de la tarjeta de credito al menos que sea un sitio de pago seguro!!, en caso de que pida los datos de la tarjeta de credito <strong>no enviar nada!!</strong></p>
+                    <hr>
+                    <p>Ya que podria ser una <strong>estafa!!</strong></p>
+                    <hr>
+                    <p>Por seguridad no se crea ni se guarda ningun tipo de informacion, en este formulario, solo es demostrativo!!</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="modal-cancelar">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="modal-enviar">Enviar</button>
+                </div>
+
+                </div>
+            </div>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </div>
+</div>

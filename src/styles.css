@@ -140,3 +140,42 @@ body.dark-mode .dropdown-item:hover {
 body.dark-mode .dropdown-divider {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
+
+/* === Modal: modo oscuro === */
+body.dark-mode .modal-dark {
+    background-color: #1e1e2e;
+    color: #e0e0e0;
+    border: 1px solid #333;
+}
+
+body.dark-mode .modal-dark .modal-header {
+    background-color: #2a2a3d;
+    border-bottom: 1px solid #444;
+    color: #f0f0f0;
+}
+
+body.dark-mode .modal-dark .modal-body {
+    background-color: #1e1e2e;
+    color: #d0d0d0;
+}
+
+body.dark-mode .modal-dark .modal-body hr {
+    border-color: #444;
+    opacity: 0.6;
+}
+
+body.dark-mode .modal-dark .modal-footer {
+    background-color: #2a2a3d;
+    border-top: 1px solid #444;
+}
+
+body.dark-mode .modal-dark .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Alerta roja en modo oscuro */
+body.dark-mode .alerta-roja {
+    background-color: #3d1114;
+    color: #f5a3a8;
+    border-color: #5c1a1f;
+}
