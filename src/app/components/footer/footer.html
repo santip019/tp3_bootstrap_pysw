@@ -6,25 +6,34 @@
             <h3 class="texto-footer">Suscríbete a nuestra crónica</h3>
             <p>Recibe nuestras ediciones exclusivas e historias cautivadoras todos los viernes en tu buzón de correo.
             </p>
-            <form class="subscribe-form">
-                <label for="email" class="sr-only">Rellena tu correo electrónico</label>
-                <input type="email" id="email" placeholder="Tu correo electrónico" required>
-                <button type="submit" class="btn-submit">Suscribir</button>
+            <form class="subscribe-form" id="subscribeForm">
+                <label for="footerEmail" class="sr-only">Rellena tu correo electrónico</label>
+                <input type="email" id="footerEmail" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="btn-submit" id="btnSubscribe">Suscribir</button>
             </form>
+            <span id="emailFeedback" class="email-feedback"></span>
+            <div id="subscribeSuccess" class="subscribe-success" style="display:none;">
+                ✅ ¡Te has suscrito exitosamente!
+            </div>
         </div>
 
-        <!--Enlaces a redes sociales.-->
         <div class="col-12 col-md-4 social-links">
             <h3 class="texto-footer">Conecta con la comunidad</h3>
-            <div class="d-flex justify-content-center gap-3, justify-content-md-start">
-                <a href="https://www.facebook.com/" aria-label="Ir a nuestra página oficial de Facebook">
-                    <i class="bi bi-facebook text-center"></i>
+            <div class="d-flex justify-content-center gap-2 justify-content-md-start flex-wrap">
+                <a href="https://www.facebook.com/" aria-label="Facebook">
+                    <span class="sprite-icon facebook"></span>
                 </a>
-                <a href="https://x.com/?lang=es" aria-label="Ir a nuestro equipo en X (Twitter)">
-                    <i class="bi bi-twitter-x"></i>
+                <a href="https://www.linkedin.com/" aria-label="LinkedIn">
+                    <span class="sprite-icon linkedin"></span>
                 </a>
-                <a href="https://www.instagram.com/" aria-label="Sigue nuestros viajes en Instagram">
-                    <i class="bi bi-instagram"></i>
+                <a href="https://www.instagram.com/" aria-label="Instagram">
+                    <span class="sprite-icon instagram"></span>
+                </a>
+                <a href="https://x.com/" aria-label="X (Twitter)">
+                    <span class="sprite-icon twitter"></span>
+                </a>
+                <a href="https://www.youtube.com/" aria-label="YouTube">
+                    <span class="sprite-icon youtube"></span>
                 </a>
             </div>
         </div>
